@@ -4,7 +4,6 @@ import com.example.currency_converter.services.FileWriterService;
 import org.json.JSONException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.io.IOException;
 
 
@@ -18,7 +17,7 @@ public class ConverterController {
     }
 
     @GetMapping("/convert")
-    public String convertFile() throws IOException, JSONException {
+    public String convert() throws IOException, JSONException {
         return fileWriterService.writeFile();
     }
 }

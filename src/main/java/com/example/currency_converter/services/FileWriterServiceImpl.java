@@ -3,7 +3,6 @@ package com.example.currency_converter.services;
 import com.example.currency_converter.configuration.FileConfiguration;
 import org.json.JSONException;
 import org.springframework.stereotype.Component;
-
 import java.io.*;
 import java.util.ArrayList;
 
@@ -18,7 +17,6 @@ public class FileWriterServiceImpl implements FileWriterService {
         this.conversionService = conversionService;
         this.fileConfiguration = fileConfiguration;
     }
-
 
     @Override
     public String writeFile() throws IOException, JSONException {

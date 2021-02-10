@@ -6,5 +6,5 @@ import java.io.IOException;
 
 public interface FileWriterService {
 
-    public String writeFile() throws IOException, JSONException;
+     String writeFile() throws IOException, JSONException;
 }

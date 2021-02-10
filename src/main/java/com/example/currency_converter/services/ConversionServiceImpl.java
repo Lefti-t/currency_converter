@@ -1,10 +1,8 @@
 package com.example.currency_converter.services;
 
-import com.example.currency_converter.configuration.FileConfiguration;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -25,7 +23,7 @@ public class ConversionServiceImpl implements ConversionService {
     }
 
     @Override
-    public JSONObject conversionHttpRequest() throws IOException, JSONException {
+    public JSONObject currencyRatesHttpRequest() throws IOException, JSONException {
 
         String apiKey = "9dc6c4c274f323da8bc33b739e2cb7cc";
         URL url = new URL("http://data.fixer.io/api/latest?access_key=" + apiKey);
@@ -42,23 +40,21 @@ public class ConversionServiceImpl implements ConversionService {
             while ((responseLine = br.readLine()) != null) {
                 response.append(responseLine.trim());
             }
-            JSONObject jsonObj = new JSONObject(response.toString());
-            return jsonObj;
+            return new JSONObject(response.toString());
         }
     }
-
 
     @Override
     public ArrayList<String> convertAmounts() throws IOException, JSONException {
 
-        DecimalFormat df = new DecimalFormat("#.####");
-        DecimalFormatSymbols sym = DecimalFormatSymbols.getInstance();
-        sym.setDecimalSeparator('.');
-        df.setDecimalFormatSymbols(sym);
+        DecimalFormat decimalFormat = new DecimalFormat("#.####");
+        DecimalFormatSymbols symbol = DecimalFormatSymbols.getInstance();
+        symbol.setDecimalSeparator('.');
+        decimalFormat.setDecimalFormatSymbols(symbol);
 
         ArrayList<String> amounts = fileReaderService.readFile();
 
-        String usdRate = conversionHttpRequest().getJSONObject("rates").getString("USD");
+        String usdRate = currencyRatesHttpRequest().getJSONObject("rates").getString("USD");
         Double conversionRate = Double.parseDouble(usdRate);
 
         ArrayList<String> convertedAmounts = new ArrayList<>();
@@ -66,7 +62,7 @@ public class ConversionServiceImpl implements ConversionService {
         for (String line : amounts) {
             if (line != null) {
                 Double singleAmount = Double.parseDouble(line);
-                String convertedSingleAmount = String.valueOf(df.format(singleAmount * conversionRate));
+                String convertedSingleAmount = String.valueOf(decimalFormat.format(singleAmount * conversionRate));
 
                 convertedAmounts.add(convertedSingleAmount);
                 convertedAmounts.add("\n");

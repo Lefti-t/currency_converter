@@ -10,5 +10,5 @@ public interface ConversionService {
 
     ArrayList<String> convertAmounts() throws IOException, JSONException;
 
-    JSONObject conversionHttpRequest() throws IOException, JSONException;
+    JSONObject currencyRatesHttpRequest() throws IOException, JSONException;
 }

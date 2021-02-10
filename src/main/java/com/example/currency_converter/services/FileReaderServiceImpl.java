@@ -18,16 +18,13 @@ public class FileReaderServiceImpl implements FileReaderService {
         this.fileConfiguration = fileConfiguration;
     }
 
-
     @Override
     public ArrayList<String> readFile() {
-        Path path = Paths.get(fileConfiguration.input);
-        ArrayList<String> amounts = new ArrayList<String>();
+        Path inputFile = Paths.get(fileConfiguration.input);
+        ArrayList<String> amounts = new ArrayList<>();
         try {
-            List<String> allLines = Files.readAllLines(path);
-            for (String line : allLines) {
-                amounts.add(line);
-            }
+            List<String> allLines = Files.readAllLines(inputFile);
+            amounts.addAll(allLines);
         } catch (IOException e) {
             e.printStackTrace();
         }
