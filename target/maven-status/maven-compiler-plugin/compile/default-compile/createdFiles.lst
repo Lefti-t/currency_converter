@@ -1,0 +1,8 @@
+com/example/currency_converter/services/FileReaderServiceImpl.class
+com/example/currency_converter/services/ConversionService.class
+com/example/currency_converter/services/FileReaderService.class
+com/example/currency_converter/controller/ConverterController.class
+com/example/currency_converter/services/FileWriterServiceImpl.class
+com/example/currency_converter/CurrencyConverterApplication.class
+com/example/currency_converter/services/ConversionServiceImpl.class
+com/example/currency_converter/services/FileWriterService.class
