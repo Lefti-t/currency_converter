@@ -22,7 +22,7 @@ The API that was used for this project is from Fixer.io (https://fixer.io/)
 
 ## Convert
 
-1) open ```src/main/resources/static/input.txt``` and write each one of the amounts you need converted in a new line.
+1)Open ```src/main/resources/static/input.txt``` and write each one of the amounts you need converted in a new line.
 
 example: 
 ```
@@ -33,7 +33,7 @@ example:
 395.8209
 ```
 
-2) Use Postman to make a GET request to ```http://localhost:8080/convert``` or use your preffered browser to send the request.
+2)Make a GET request to ```http://localhost:8080/convert``` through Postman(https://www.postman.com/downloads/) or use your preffered browser to send the request.
 
 If no error has occured the app will response with a message providing the path of the output file which contains the amounts converted to your currency of preference.
 
