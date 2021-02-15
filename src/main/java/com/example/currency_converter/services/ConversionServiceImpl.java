@@ -57,7 +57,7 @@ public class ConversionServiceImpl implements ConversionService {
 
         ArrayList<String> amounts = fileReaderService.readFile();
 
-        String usdRate = currencyRatesHttpRequest().getJSONObject("rates").getString("USD");
+        String usdRate = currencyRatesHttpRequest().getJSONObject("rates").getString(environment.getProperty("app.outputCurrency"));
         Double conversionRate = Double.parseDouble(usdRate);
 
         ArrayList<String> convertedAmounts = new ArrayList<>();
