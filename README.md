@@ -1,10 +1,8 @@
 # Currency-converter
 
-A currency converter which allows you to convert multiple currencies from one to another.
+A currency converter is a Java application which allows you to convert multiple currencies from one to another.
 
-The default input currency is Euro.
-
-The default output is USD but can be changed in ``` application-properties -> environment variables ``` as well as the value for the Api key.
+The framework that was used for this project is Spring Boot 2.4.2(https://spring.io/projects/spring-boot)
 
 The API that was used for this project is from Fixer.io (https://fixer.io/)
 
@@ -21,6 +19,11 @@ The API that was used for this project is from Fixer.io (https://fixer.io/)
 
 
 ## Convert
+
+The default input currency is Euro.
+
+The default output is USD but can be changed in ``` application-properties -> environment variables ``` as well as the value for the Api key.
+
 
 1)Open ```src/main/resources/static/input.txt``` and write each one of the amounts you need converted in a new line.
 
