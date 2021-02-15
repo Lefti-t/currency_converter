@@ -23,7 +23,7 @@ public class FileWriterServiceImpl implements FileWriterService {
     @Override
     public String writeFile() throws IOException, JSONException {
         String outputPath = new File(Objects.requireNonNull(environment.getProperty("app.outputPath"))).getAbsolutePath();
-        FileWriter myWriter = new FileWriter(outputPath);
+        FileWriter myWriter = new FileWriter(environment.getProperty("app.outputPath"));
         ArrayList<String> convertedAmounts = conversionService.convertAmounts();
         for (String line : convertedAmounts) {
             try {
