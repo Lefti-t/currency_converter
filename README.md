@@ -10,6 +10,10 @@ Maven 3.6.3
 The API that was used for this project is from Fixer.io (https://fixer.io/)
 
 
+
+
+
+
 ## Project setup
 
 1)Install Java in your system(http://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -19,6 +23,11 @@ The API that was used for this project is from Fixer.io (https://fixer.io/)
 3)Install an IDE like [NetBeans](https://netbeans.org/), [Intellij IDEA](https://www.jetbrains.com/idea/), or [Eclipse](https://eclipse.org/ide/).
 
 4)Clone this repo and run the app.
+
+
+
+
+
 
 
 ## Convert
