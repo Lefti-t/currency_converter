@@ -34,7 +34,7 @@ The API that was used for this project is from Fixer.io (https://fixer.io/)
 
 The default input currency is Euro.
 
-The default output is USD but can be changed in ``` application-properties -> environment variables ``` as well as the value for the Api key.
+The default output is USD but it can be changed in ```src/main/resources/application.properties``` as well as the value of the Api key.
 
 
 1)Open ```src/main/resources/static/input.txt``` and write each one of the amounts you need converted in a new line.
