@@ -2,7 +2,10 @@
 
 A currency converter is a Java application which allows you to convert multiple currencies from one to another.
 
-The framework that was used for this project is Spring Boot 2.4.2(https://spring.io/projects/spring-boot)
+The tech stack that was used for this project is:
+Spring Boot 2.4.2(https://spring.io/projects/spring-boot)
+OpenJDK Runtime Environment 14.0.2
+Maven 3.6.3
 
 The API that was used for this project is from Fixer.io (https://fixer.io/)
 
