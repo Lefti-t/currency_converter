@@ -1,26 +1,29 @@
 package com.example.currency_converter.services;
 
-import com.example.currency_converter.configuration.FileConfiguration;
 import org.json.JSONException;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 @Component
+@PropertySource("classpath:application.properties")
 public class FileWriterServiceImpl implements FileWriterService {
 
     private final ConversionService conversionService;
-    private final FileConfiguration fileConfiguration;
+    private final Environment environment;
 
-
-    public FileWriterServiceImpl(ConversionService conversionService, FileConfiguration fileConfiguration) {
+    public FileWriterServiceImpl(ConversionService conversionService, Environment environment) {
         this.conversionService = conversionService;
-        this.fileConfiguration = fileConfiguration;
+        this.environment = environment;
     }
 
     @Override
     public String writeFile() throws IOException, JSONException {
-        FileWriter myWriter = new FileWriter(fileConfiguration.output);
+        String outputPath = new File(Objects.requireNonNull(environment.getProperty("app.outputPath"))).getAbsolutePath();
+        FileWriter myWriter = new FileWriter(outputPath);
         ArrayList<String> convertedAmounts = conversionService.convertAmounts();
         for (String line : convertedAmounts) {
             try {
@@ -31,6 +34,6 @@ public class FileWriterServiceImpl implements FileWriterService {
             }
         }
         myWriter.close();
-        return "A new file with the converted currencies was created at: " + fileConfiguration.output;
+        return "A new file with the converted currencies was created at: " + outputPath;
     }
 }

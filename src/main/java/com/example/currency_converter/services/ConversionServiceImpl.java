@@ -2,6 +2,8 @@ package com.example.currency_converter.services;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,20 +15,21 @@ import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 
 @Component
-
+@PropertySource("classpath:application.properties")
 public class ConversionServiceImpl implements ConversionService {
 
     private final FileReaderService fileReaderService;
+    private final Environment environment;
 
-    public ConversionServiceImpl(FileReaderService fileReaderService) {
+    public ConversionServiceImpl(FileReaderService fileReaderService, Environment environment) {
         this.fileReaderService = fileReaderService;
+        this.environment = environment;
     }
 
     @Override
     public JSONObject currencyRatesHttpRequest() throws IOException, JSONException {
 
-        String apiKey = "9dc6c4c274f323da8bc33b739e2cb7cc";
-        URL url = new URL("http://data.fixer.io/api/latest?access_key=" + apiKey);
+        URL url = new URL(environment.getProperty("app.apiUrl") + environment.getProperty("app.apiKey"));
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         con.setRequestProperty("Content-Type", "application/json; utf-8");
